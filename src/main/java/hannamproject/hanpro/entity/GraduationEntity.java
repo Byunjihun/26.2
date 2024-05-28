@@ -39,6 +39,7 @@ public class GraduationEntity {
     private Long totalScore;
     @Column
     private String memberPassword;
+
     public static GraduationEntity toGraduationEntity(GraduationDto graduationDto){
         GraduationEntity graduationEntity = new GraduationEntity();
         graduationEntity.setMemberStudentId(graduationDto.getMemberStudentId());

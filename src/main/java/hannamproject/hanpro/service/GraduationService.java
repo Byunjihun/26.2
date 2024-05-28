@@ -1,6 +1,5 @@
 package hannamproject.hanpro.service;
 
-import hannamproject.hanpro.dto.GraduationDto;
 import hannamproject.hanpro.entity.GraduationEntity;
 import hannamproject.hanpro.repository.GraduationRepository;
 import lombok.RequiredArgsConstructor;
@@ -13,7 +12,7 @@ import java.util.Optional;
 public class GraduationService {
     private final GraduationRepository graduationRepository;
 
-    public Optional<GraduationEntity> findGraduationScore(String memberStudentId) {
+    public Optional<GraduationEntity> findGraduationScore(String memberStudentId){
         return graduationRepository.findByMemberStudentId(memberStudentId);
     }
 }

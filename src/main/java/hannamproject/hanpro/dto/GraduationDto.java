@@ -25,7 +25,7 @@ public class GraduationDto {
     private Long swContestScore;
     private Long totalScore;
 
-    public static GraduationDto tograduationDto(GraduationEntity graduationEntity) {
+    public static GraduationDto toGraduationDto(GraduationEntity graduationEntity){
         GraduationDto graduationDto = new GraduationDto();
         graduationDto.setMemberStudentId(graduationEntity.getMemberStudentId());
         graduationDto.setCapstoneDesignScore(graduationEntity.getCapstoneDesignScore());
@@ -40,5 +40,6 @@ public class GraduationDto {
         graduationDto.setSwContestScore(graduationEntity.getSwContestScore());
         graduationDto.setTotalScore(graduationEntity.getTotalScore());
         return graduationDto;
+
     }
 }

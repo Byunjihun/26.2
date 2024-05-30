@@ -1,22 +1,27 @@
-# MySQL 설정
-
-server:
-  address: localhost
-  port: 8080
-
 spring:
+  application:
+    name: hanpro
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://localhost:3306/hannam_data?useSSL=false&serverTimezone=Asia/Seoul&characterEncoding=UTF-8
-    username:
-    password: 
-
+    username: 'jihun'
+    password: '970711'
   jpa:
-    database: mysql
-    show-sql: true
     hibernate:
       ddl-auto: update
     properties:
       hibernate:
         show_sql: true
         format_sql: true
+
+jwt:
+  secret: 'quswlgnsrlatjdalsrlarnralsrkdtpduddldbstjr21181818190000000000'
+
+
+server:
+  address: localhost
+  port: 8080
+
+logging:
+  level:
+    org.springframework.security: DEBUG

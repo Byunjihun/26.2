@@ -15,10 +15,10 @@ import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
-public class MemberService {
+public class LoginService {
     private final MemberRepository memberRepository;
     private final PasswordEncoder passwordEncoder;
-    private static final Logger logger = LoggerFactory.getLogger(MemberService.class);
+    private static final Logger logger = LoggerFactory.getLogger(LoginService.class);
 
     @PostConstruct
     public void migratePasswords() {

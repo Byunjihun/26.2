@@ -23,7 +23,9 @@ public class LoginController {
             MemberDto loginResult = loginService.login(memberDto);
             if (loginResult != null) {
                 String token = jwtTokenProvider.createToken(loginResult.getMemberStudentId());
-                return ResponseEntity.ok(successResponse(loginResult, token));
+                return ResponseEntity.ok()
+                        .header("Authorization", "Bearer " + token)
+                        .body(successResponse(loginResult));
             } else {
                 return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(errorResponse("잘못된 자격 증명"));
             }
@@ -32,10 +34,9 @@ public class LoginController {
         }
     }
 
-    private Map<String, Object> successResponse(MemberDto memberDto, String token) {
+    private Map<String, Object> successResponse(MemberDto memberDto) {
         return Map.of(
                 "loginSuccess", true,
-                "token", token,
                 "useData", Map.of(
                         "memberStudentId", memberDto.getMemberStudentId(),
                         "memberName", memberDto.getMemberName(),

@@ -18,7 +18,6 @@ public class MemberDto {
     private String memberDepartment;
     private Long memberGrade;
     private Long memberGraduationScore;
-    private boolean rememberMe; // 아이디 기억 옵션 추가
 
     public static MemberDto toMemberDto(MemberEntity memberEntity) {
         MemberDto memberDto = new MemberDto();

@@ -3,9 +3,10 @@ spring:
     name: hanpro
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/hannam_data?useSSL=false&serverTimezone=Asia/Seoul&characterEncoding=UTF-8
-    username: ''
-    password: ''
+    url: jdbc:mysql://15.164.30.188:3306/comman_aws?useSSL=false&serverTimezone=Asia/Seoul&characterEncoding=UTF-8
+    username: 'comman'
+    password: '1234'
+
   jpa:
     hibernate:
       ddl-auto: update
@@ -15,12 +16,12 @@ spring:
         format_sql: true
 
 jwt:
-  secret: ''
+  secret: 'quswlgnsrlatjdalsrlarnralsrkdtpduddldbstjr21181818190000000000'
 
 
-server:
-  address: localhost
-  port: 8080
+#server:
+#  address: localhost
+#  port: 8080
 
 logging:
   level:

@@ -25,7 +25,7 @@ public class LoginService {
         List<MemberEntity> members = memberRepository.findAll();
         for (MemberEntity member : members) {
             if (!isBCryptEncoded(member.getMemberPassword())) {
-                logger.info("Migrating password for user: {}", member.getMemberStudentId());
+                logger.info("Migrating password for user: {}", member.getStudentId());
                 String encodedPassword = passwordEncoder.encode(member.getMemberPassword());
                 member.setMemberPassword(encodedPassword);
                 memberRepository.save(member);
@@ -47,11 +47,11 @@ public class LoginService {
     }
 
     public MemberDto login(MemberDto memberDto) {
-        logger.info("Attempting to log in with memberStudentId: {}", memberDto.getMemberStudentId());
+        logger.info("Attempting to log in with studentId: {}", memberDto.getStudentId());
 
-        Optional<MemberEntity> byMemberStudentId = memberRepository.findByMemberStudentId(memberDto.getMemberStudentId());
-        if (byMemberStudentId.isPresent()) {
-            MemberEntity memberEntity = byMemberStudentId.get();
+        Optional<MemberEntity> byStudentId = memberRepository.findByStudentId(memberDto.getStudentId());
+        if (byStudentId.isPresent()) {
+            MemberEntity memberEntity = byStudentId.get();
             logger.info("Found user: {}", memberEntity);
 
             // 비밀번호 비교
@@ -62,7 +62,7 @@ public class LoginService {
                 logger.info("Passwords do not match");
             }
         } else {
-            logger.info("No user found with memberStudentId: {}", memberDto.getMemberStudentId());
+            logger.info("No user found with studentId: {}", memberDto.getStudentId());
         }
         return null;
     }

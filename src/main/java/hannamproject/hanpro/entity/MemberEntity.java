@@ -14,23 +14,23 @@ import lombok.Setter;
 public class MemberEntity {
     @Id
     @Column
-    private String memberStudentId;
+    private String studentId;
 
     @Column
     private String memberEmail;
 
     @Column
-    private String memberName;
+    private String userName;
 
     @Column
     private String memberPassword;
 
     @Column
-    private String memberDepartment;
+    private String department;
 
     @Column
-    private Long memberGrade;
+    private String year;
 
     @Column
-    private Long memberGraduationScore;
+    private Long graduationScore;
 }

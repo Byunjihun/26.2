@@ -11,35 +11,35 @@ import lombok.ToString;
 @NoArgsConstructor
 @ToString
 public class MemberDto {
-    private String memberStudentId;
+    private String studentId;
     private String memberEmail;
-    private String memberName;
+    private String userName;
     private String memberPassword;
-    private String memberDepartment;
-    private Long memberGrade;
-    private Long memberGraduationScore;
+    private String department;
+    private String year;
+    private Long graduationScore;
 
     public static MemberDto toMemberDto(MemberEntity memberEntity) {
         MemberDto memberDto = new MemberDto();
-        memberDto.setMemberStudentId(memberEntity.getMemberStudentId());
+        memberDto.setStudentId(memberEntity.getStudentId());
         memberDto.setMemberEmail(memberEntity.getMemberEmail());
-        memberDto.setMemberName(memberEntity.getMemberName());
+        memberDto.setUserName(memberEntity.getUserName());
         memberDto.setMemberPassword(memberEntity.getMemberPassword());
-        memberDto.setMemberDepartment(memberEntity.getMemberDepartment());
-        memberDto.setMemberGrade(memberEntity.getMemberGrade());
-        memberDto.setMemberGraduationScore(memberEntity.getMemberGraduationScore());
+        memberDto.setDepartment(memberEntity.getDepartment());
+        memberDto.setYear(memberEntity.getYear());
+        memberDto.setGraduationScore(memberEntity.getGraduationScore());
         return memberDto;
     }
 
     public static MemberEntity toMemberEntity(MemberDto memberDto) {
         MemberEntity memberEntity = new MemberEntity();
-        memberEntity.setMemberStudentId(memberDto.getMemberStudentId());
+        memberEntity.setStudentId(memberDto.getStudentId());
         memberEntity.setMemberEmail(memberDto.getMemberEmail());
-        memberEntity.setMemberName(memberDto.getMemberName());
+        memberEntity.setUserName(memberDto.getUserName());
         memberEntity.setMemberPassword(memberDto.getMemberPassword());
-        memberEntity.setMemberDepartment(memberDto.getMemberDepartment());
-        memberEntity.setMemberGrade(memberDto.getMemberGrade());
-        memberEntity.setMemberGraduationScore(memberDto.getMemberGraduationScore());
+        memberEntity.setDepartment(memberDto.getDepartment());
+        memberEntity.setYear(memberDto.getYear());
+        memberEntity.setGraduationScore(memberDto.getGraduationScore());
         return memberEntity;
     }
 }

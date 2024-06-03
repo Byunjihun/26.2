@@ -22,7 +22,7 @@ public class LoginController {
         try {
             MemberDto loginResult = loginService.login(memberDto);
             if (loginResult != null) {
-                String token = jwtTokenProvider.createToken(loginResult.getMemberStudentId());
+                String token = jwtTokenProvider.createToken(loginResult.getStudentId());
                 return ResponseEntity.ok()
                         .header("Authorization", "Bearer " + token)
                         .body(successResponse(loginResult));
@@ -38,11 +38,11 @@ public class LoginController {
         return Map.of(
                 "loginSuccess", true,
                 "useData", Map.of(
-                        "memberStudentId", memberDto.getMemberStudentId(),
-                        "memberName", memberDto.getMemberName(),
-                        "memberDepartment", memberDto.getMemberDepartment(),
-                        "memberGrade", memberDto.getMemberGrade(),
-                        "memberGraduationScore", memberDto.getMemberGraduationScore()
+                        "studentId", memberDto.getStudentId(),
+                        "userName", memberDto.getUserName(),
+                        "department", memberDto.getDepartment(),
+                        "year", memberDto.getYear(),
+                        "graduationScore", memberDto.getGraduationScore()
                 )
         );
     }

@@ -31,6 +31,7 @@ public class BoardPostService {
                     post.setTitle(updatedPost.getTitle());
                     post.setContent(updatedPost.getContent());
                     post.setAuthor(updatedPost.getAuthor());
+                    post.setAuthorName(updatedPost.getAuthorName());
                     return boardPostRepository.save(post);
                 }).orElse(null);
     }

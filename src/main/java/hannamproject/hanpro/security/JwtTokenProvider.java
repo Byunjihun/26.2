@@ -32,7 +32,6 @@ public class JwtTokenProvider {
 
     @PostConstruct
     protected void init() {
-        // 키를 Base64 인코딩하지 않고 그대로 사용
         key = Keys.hmacShaKeyFor(secretKey.getBytes());
     }
 

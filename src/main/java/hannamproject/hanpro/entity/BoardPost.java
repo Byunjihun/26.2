@@ -24,20 +24,20 @@ public class BoardPost {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String title; // 제목
+    private String title;
 
-    private String content; // 작성 내용
+    private String content;
 
-    private String author; // 작성자 ID
+    private String author;
 
-    private String authorName; // 작성자 이름
+    private String authorName;
 
     @CreatedDate
     @Column(updatable = false)
-    private LocalDate createdDate; // 작성일
+    private LocalDate createdDate;
 
-    private LocalTime createdTime; // 작성 시간
+    private LocalTime createdTime;
 
     @LastModifiedDate
-    private LocalDateTime updatedDate; // 업데이트 시간
+    private LocalDateTime updatedDate;
 }

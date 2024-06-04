@@ -11,6 +11,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 @Service
@@ -65,5 +66,27 @@ public class LoginService {
             logger.info("No user found with studentId: {}", memberDto.getStudentId());
         }
         return null;
+    }
+
+    public Optional<MemberDto> getMemberDetails(String studentId) {
+        return memberRepository.findByStudentId(studentId).map(MemberDto::toMemberDto);
+    }
+
+    public Optional<List<String>> getSkills(String studentId) {
+        return memberRepository.findByStudentId(studentId).map(MemberEntity::getSkills);
+    }
+
+    public Optional<Boolean> hasSkill(String studentId, String skill) {
+        return memberRepository.findByStudentId(studentId)
+                .map(member -> member.getSkills().contains(skill));
+    }
+
+    public Optional<Map<String, Boolean>> getSubjects(String studentId) {
+        return memberRepository.findByStudentId(studentId).map(MemberEntity::getSubjects);
+    }
+
+    public Optional<Boolean> getSubject(String studentId, String subject) {
+        return memberRepository.findByStudentId(studentId)
+                .map(member -> member.getSubjects().get(subject));
     }
 }

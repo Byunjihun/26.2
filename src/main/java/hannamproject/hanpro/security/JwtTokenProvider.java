@@ -22,7 +22,7 @@ public class JwtTokenProvider {
 
     private Key key;
 
-    private final long validityInMilliseconds = 3600000; // 1시간
+    private final long validityInMilliseconds = 3600000;
 
     private final UserDetailsService userDetailsService;
 

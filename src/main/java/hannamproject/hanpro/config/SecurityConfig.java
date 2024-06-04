@@ -39,7 +39,7 @@ public class SecurityConfig {
                 .authorizeHttpRequests(authorizeRequests ->
                         authorizeRequests
                                 .requestMatchers("/member/login", "/member/register").permitAll()
-                                .requestMatchers("/board/**").authenticated() // /board/** 엔드포인트 보호
+                                .requestMatchers("/board/**").authenticated()
                                 .anyRequest().authenticated()
                 )
                 .csrf(csrf -> csrf.disable())

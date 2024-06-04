@@ -8,7 +8,10 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.security.Principal;
+import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 
 @RestController
 @RequiredArgsConstructor
@@ -34,6 +37,29 @@ public class LoginController {
         }
     }
 
+    @GetMapping("/details")
+    public ResponseEntity<MemberDto> getMemberDetails(Principal principal) {
+        String studentId = principal.getName();
+        Optional<MemberDto> memberDtoOptional = loginService.getMemberDetails(studentId);
+        return memberDtoOptional.map(ResponseEntity::ok)
+                .orElseGet(() -> ResponseEntity.status(HttpStatus.NOT_FOUND).build());
+    }
+
+    @GetMapping("/skills")
+    public ResponseEntity<List<String>> getSkills(Principal principal) {
+        String studentId = principal.getName();
+        Optional<List<String>> skillsOptional = loginService.getSkills(studentId);
+        return skillsOptional.map(ResponseEntity::ok)
+                .orElseGet(() -> ResponseEntity.status(HttpStatus.NOT_FOUND).build());
+    }
+
+    @GetMapping("/subjects")
+    public ResponseEntity<Optional<Map<String, Boolean>>> getSubjects(Principal principal) {
+        String studentId = principal.getName();
+        Optional<Map<String, Boolean>> subjectMap = loginService.getSubjects(studentId);
+        return ResponseEntity.ok(subjectMap);
+    }
+
     private Map<String, Object> successResponse(MemberDto memberDto) {
         return Map.of(
                 "loginSuccess", true,
@@ -42,7 +68,10 @@ public class LoginController {
                         "userName", memberDto.getUserName(),
                         "department", memberDto.getDepartment(),
                         "year", memberDto.getYear(),
-                        "graduationScore", memberDto.getGraduationScore()
+                        "graduationScore", memberDto.getGraduationScore(),
+                        "maxScore", memberDto.getMaxScore(),
+                        "skills", memberDto.getSkills(),
+                        "subjects", memberDto.getSubjects()
                 )
         );
     }

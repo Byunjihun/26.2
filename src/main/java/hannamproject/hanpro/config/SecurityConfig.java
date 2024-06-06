@@ -39,6 +39,7 @@ public class SecurityConfig {
                 .authorizeHttpRequests(authorizeRequests ->
                         authorizeRequests
                                 .requestMatchers("/member/login", "/member/register").permitAll()
+                                .requestMatchers("/member/image/**").authenticated()  // Add this line
                                 .requestMatchers("/board/**").authenticated()
                                 .anyRequest().authenticated()
                 )
@@ -47,4 +48,5 @@ public class SecurityConfig {
 
         return http.build();
     }
+
 }

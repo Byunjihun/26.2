@@ -4,8 +4,8 @@ spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://15.164.30.188:3306/comman_aws?useSSL=false&serverTimezone=Asia/Seoul&characterEncoding=UTF-8
-    username: 'comman'
-    password: '1234'
+    username: 
+    password: 
 
   jpa:
     hibernate:

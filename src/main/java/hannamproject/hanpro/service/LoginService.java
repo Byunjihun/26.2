@@ -47,23 +47,23 @@ public class LoginService {
         memberRepository.save(memberEntity);
     }
 
-    public MemberDto login(MemberDto memberDto) {
-        logger.info("Attempting to log in with studentId: {}", memberDto.getStudentId());
+    public MemberDto login(String studentId, String password) {
+        logger.info("Attempting to log in with studentId: {}", studentId);
 
-        Optional<MemberEntity> byStudentId = memberRepository.findByStudentId(memberDto.getStudentId());
+        Optional<MemberEntity> byStudentId = memberRepository.findByStudentId(studentId);
         if (byStudentId.isPresent()) {
             MemberEntity memberEntity = byStudentId.get();
             logger.info("Found user: {}", memberEntity);
 
             // 비밀번호 비교
-            if (passwordEncoder.matches(memberDto.getMemberPassword(), memberEntity.getMemberPassword())) {
+            if (passwordEncoder.matches(password, memberEntity.getMemberPassword())) {
                 logger.info("Passwords match");
                 return MemberDto.toMemberDto(memberEntity);
             } else {
                 logger.info("Passwords do not match");
             }
         } else {
-            logger.info("No user found with studentId: {}", memberDto.getStudentId());
+            logger.info("No user found with studentId: {}", studentId);
         }
         return null;
     }

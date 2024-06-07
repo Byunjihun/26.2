@@ -2,7 +2,6 @@ package hannamproject.hanpro.config;
 
 import hannamproject.hanpro.filter.JwtAuthenticationFilter;
 import hannamproject.hanpro.security.JwtTokenProvider;
-import hannamproject.hanpro.service.CustomUserDetailsService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -21,7 +20,6 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 public class SecurityConfig {
 
     private final JwtTokenProvider jwtTokenProvider;
-    private final CustomUserDetailsService customUserDetailsService;
 
     @Bean
     public PasswordEncoder passwordEncoder() {
@@ -39,8 +37,7 @@ public class SecurityConfig {
                 .authorizeHttpRequests(authorizeRequests ->
                         authorizeRequests
                                 .requestMatchers("/member/login", "/member/register").permitAll()
-                                .requestMatchers("/member/image/**").authenticated()  // Add this line
-                                .requestMatchers("/board/**").authenticated()
+                                .requestMatchers("/member/graduation-score", "/member/{studentId}/graduation-score").authenticated() // Ensure correct paths
                                 .anyRequest().authenticated()
                 )
                 .csrf(csrf -> csrf.disable())

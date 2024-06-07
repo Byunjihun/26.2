@@ -34,10 +34,10 @@ public class MemberEntity {
     private String year;
 
     @Column
-    private Long graduationScore;
+    private Long graduationScore; // Ensure this is Long
 
     @Column
-    private Integer maxScore;
+    private Integer maxScore; // Ensure this is Integer
 
     @ElementCollection
     @CollectionTable(name = "member_skills", joinColumns = @JoinColumn(name = "student_id"))
@@ -49,4 +49,34 @@ public class MemberEntity {
     @MapKeyColumn(name = "subject_name")
     @Column(name = "is_enrolled")
     private Map<String, Boolean> subjects;
+
+    @OneToMany(mappedBy = "member", cascade = CascadeType.ALL)
+    private List<CertificateMajorEntity> certificateMajorEntities;
+
+    @OneToMany(mappedBy = "member", cascade = CascadeType.ALL)
+    private List<CounselingEntity> counselingEntities;
+
+    @OneToMany(mappedBy = "member", cascade = CascadeType.ALL)
+    private List<DepartmentEventsEntity> departmentEventsEntities;
+
+    @OneToMany(mappedBy = "member", cascade = CascadeType.ALL)
+    private List<EmploymentEntity> employmentEntities;
+
+    @OneToMany(mappedBy = "member", cascade = CascadeType.ALL)
+    private List<EmploymentTrainingEntity> employmentTrainingEntities;
+
+    @OneToMany(mappedBy = "member", cascade = CascadeType.ALL)
+    private List<GraduationExhibitionEntity> graduationExhibitionEntities;
+
+    @OneToMany(mappedBy = "member", cascade = CascadeType.ALL)
+    private List<InternshipEntity> internshipEntities;
+
+    @OneToMany(mappedBy = "member", cascade = CascadeType.ALL)
+    private List<LanguageSkillsEntity> languageSkillsEntities;
+
+    @OneToMany(mappedBy = "member", cascade = CascadeType.ALL)
+    private List<OverseasTrainingEntity> overseasTrainingEntities;
+
+    @OneToMany(mappedBy = "member", cascade = CascadeType.ALL)
+    private List<S_W_ContestEntity> s_w_ContestEntities;
 }

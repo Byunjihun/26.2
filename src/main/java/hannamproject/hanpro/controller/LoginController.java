@@ -23,7 +23,7 @@ public class LoginController {
     @PostMapping("/login")
     public ResponseEntity<Map<String, Object>> login(@RequestBody MemberDto memberDto) {
         try {
-            MemberDto loginResult = loginService.login(memberDto);
+            MemberDto loginResult = loginService.login(memberDto.getStudentId(), memberDto.getMemberPassword());
             if (loginResult != null) {
                 String token = jwtTokenProvider.createToken(loginResult.getStudentId());
                 return ResponseEntity.ok()

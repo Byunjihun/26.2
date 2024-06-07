@@ -5,6 +5,7 @@ import hannamproject.hanpro.repository.BoardPostRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalTime;
 import java.util.List;
 
 @Service
@@ -22,6 +23,7 @@ public class BoardPostService {
     }
 
     public BoardPost createPost(BoardPost post) {
+        post.setCreatedTime(LocalTime.now());
         return boardPostRepository.save(post);
     }
 
@@ -30,8 +32,10 @@ public class BoardPostService {
                 .map(post -> {
                     post.setTitle(updatedPost.getTitle());
                     post.setContent(updatedPost.getContent());
-                    post.setAuthor(updatedPost.getAuthor());
-                    post.setAuthorName(updatedPost.getAuthorName());
+                    post.setAuthorId(updatedPost.getAuthorId());  // Set authorId to the updating user
+                    post.setAuthorName(updatedPost.getAuthorName());  // Set authorName to the updating user's name
+                    post.setCreatedDate(post.getCreatedDate());
+                    post.setCreatedTime(post.getCreatedTime());
                     return boardPostRepository.save(post);
                 }).orElse(null);
     }

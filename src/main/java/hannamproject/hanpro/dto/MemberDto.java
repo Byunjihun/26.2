@@ -20,8 +20,8 @@ public class MemberDto {
     private String memberPassword;
     private String department;
     private String year;
-    private Long graduationScore;
-    private Integer maxScore;
+    private Long graduationScore; // Ensure this is Long
+    private Integer maxScore; // Ensure this is Integer
     private List<String> skills;
     private Map<String, Boolean> subjects;
 
@@ -35,8 +35,8 @@ public class MemberDto {
         memberDto.setYear(memberEntity.getYear());
         memberDto.setGraduationScore(memberEntity.getGraduationScore());
         memberDto.setMaxScore(memberEntity.getMaxScore());
-        memberDto.setSkills(memberEntity.getSkills());
-        memberDto.setSubjects(memberEntity.getSubjects());
+        memberDto.setSkills(memberEntity.getSkills()); // Ensure these methods exist
+        memberDto.setSubjects(memberEntity.getSubjects()); // Ensure these methods exist
         return memberDto;
     }
 
@@ -50,8 +50,8 @@ public class MemberDto {
         memberEntity.setYear(memberDto.getYear());
         memberEntity.setGraduationScore(memberDto.getGraduationScore());
         memberEntity.setMaxScore(memberDto.getMaxScore());
-        memberEntity.setSkills(memberDto.getSkills());
-        memberEntity.setSubjects(memberDto.getSubjects());
+        memberEntity.setSkills(memberDto.getSkills()); // Ensure these methods exist
+        memberEntity.setSubjects(memberDto.getSubjects()); // Ensure these methods exist
         return memberEntity;
     }
 }

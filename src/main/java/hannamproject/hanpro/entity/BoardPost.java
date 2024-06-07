@@ -28,7 +28,7 @@ public class BoardPost {
 
     private String content;
 
-    private String author;
+    private String authorId;  // Changed from author to authorId
 
     private String authorName;
 
